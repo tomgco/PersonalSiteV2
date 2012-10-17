@@ -5,6 +5,7 @@ html(lang='en')
       meta(charset='utf-8')
       meta(name='description', content=properties.description)
       meta(name='keywords', content=properties.keyWords)
+      meta(name="viewport", content='width=device-width, initial-scale=1')
     
       //- SITE INFORMATION
       title=page.title
@@ -17,7 +18,7 @@ html(lang='en')
       document.getElementsByTagName('html')[0].setAttribute('class', 'js');
 
   body(class=page.section)
-
+    b.greenbar
     each bodyStart in includes.bodyStart
       !=partial(bodyStart)
 

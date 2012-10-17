@@ -4,13 +4,13 @@ var _ = require('lodash')
 
 var properties =
   { version: '0.1.0'
-  , name: 'ctrl'
-  , tagline: 'More JavaScripty than your traditional CMS'
+  , name: 'tomgco'
+  , tagline: 'Tom\'s Website'
   , description: 'A node.js CMS for quickly building powerful web sites, tailored to your exact needs'
-  , keywords: 'ctrl'
-  , pageTitle: 'ctrl CMS'
+  , keywords: 'tomgco, gallacher'
+  , pageTitle: 'Personal Site'
   , port: basePort + 1
-  , email: 'paul.serby@clock.co.uk'
+  , email: 'me@tomg.co'
   , siteUrl: 'http://localhost:' + (basePort + 1)
   , logPath: join(__dirname, '/logs')
   , cachePath: join(__dirname, '/cache')
@@ -19,7 +19,7 @@ var properties =
   , database:
     { host: '127.0.0.1'
     , port: 27017
-    , name: 'ctrl-development'
+    , name: 'tomgco-development'
     }
   , bcryptWorkFactor: 1
   , debug: true
@@ -32,23 +32,23 @@ var environmentProperties = {
     siteUrl: 'http://localhost:' + (basePort + 2)
     , database:
       { replSet:
-        { name: 'ctrl'
+        { name: 'tomgco'
         , servers: [
           { host: 'localhost', port: 28000 }
           , { host: 'localhost', port: 28001 }
           ]
         }
-      , name: 'ctrl-testing'
+      , name: 'tomgco-testing'
       }
   }
   , production: {
     siteUrl: 'http://localhost:' + (basePort + 3)
     , port: basePort + 3
-    , email: 'paul.serby@clock.co.uk'
+    , email: 'me@tomg.co'
     , database:
       { host: '127.0.0.1'
       , port: 27017
-      , name: 'ctrl-production'
+      , name: 'tomgco-production'
       }
   }
 }
