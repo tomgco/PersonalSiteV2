@@ -15,7 +15,7 @@ var properties =
   , logPath: join(__dirname, '/logs')
   , cachePath: join(__dirname, '/cache')
   , dataPath: join(__dirname, '/data')
-  , binaryCachePath: '/binary/'
+  , binaryCachePath: join(__dirname, '/data/binary')
   , database:
     { host: '127.0.0.1'
     , port: 27017

@@ -8,4 +8,8 @@ module.exports = function createRoutes (serivceLocator) {
       }
     })
   })
+
+  serivceLocator.router.get('/gzippo', function(req, res) {
+    res.redirect('https://github.com/tomgco/gzippo')
+  })
 }

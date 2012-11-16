@@ -2,14 +2,14 @@ module.exports = {
   name: 'Personal Site',
   description: 'Personal Site',
   version: '0.0.1',
-  publicRoute: '/main',
+  publicRoute: '/site',
 
   initialize: function(serviceLocator, done) {
 
     var compact = require('compact').createCompact({
       srcPath: __dirname + '/public/',
       destPath: __dirname + '/public/js/compact/',
-      webPath: serviceLocator.versionator.versionPath('/main/js/compact/'),
+      webPath: serviceLocator.versionator.versionPath('/site/js/compact/'),
       debug: serviceLocator.properties.debug
     });
 

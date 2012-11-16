@@ -12,7 +12,7 @@ html(lang='en')
 
     block styles
       //- CSS
-      link(rel='stylesheet', type='text/css', href=versionPath('/main/css/index.css'), media='all')
+      link(rel='stylesheet', type='text/css', href=versionPath('/site/css/index.css'), media='all')
 
     script
       document.getElementsByTagName('html')[0].setAttribute('class', 'js');
@@ -28,7 +28,7 @@ html(lang='en')
 
       block nav
         include includes/nav
-      
+
       #main-content
         block content
 
