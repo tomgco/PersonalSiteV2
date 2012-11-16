@@ -1,5 +1,5 @@
 var _ = require('lodash')
-  , basePort = 3020
+  , basePort = 3022
   , join = require('path').join
 
 var properties =
