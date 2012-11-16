@@ -3,6 +3,7 @@
 /cache
 
 bundles/personalSite/public/js/compact
+*.css
 
 # Windows
 Thumbs.db
