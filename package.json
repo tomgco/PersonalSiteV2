@@ -34,7 +34,8 @@
     "trunky": "~0.2",
     "validity": "~0.0",
     "versionator": "~0.2",
-    "secure": "~0.1"
+    "secure": "~0.1",
+    "gzippo": "~0.2.0"
   },
   "devDependencies": {
     "mocha": "*",
