@@ -2,44 +2,44 @@ window.module('control-misc-ui', function (module) {
 
   $(function() {
 
-    // /** jQuery UI Datepicker **/
-    // $.datepicker.setDefaults({dayNamesMin: $.datepicker._defaults.dayNamesShort});
-    // $(".datepicker").datepicker(
-    //   { dateFormat: 'DD d MM, yy'
-    //   , showOtherMonths: true
-    //   , selectOtherMonths: true
-    //   , minDate: 0
-    //   , firstDay: 1
-    //   , beforeShow : function (input, picker) {
-    //       picker.dpDiv
-    //         .removeClass('above')
-    //         .removeClass('below');
-    //       setTimeout(function () {
-    //         var dppos = $(picker.dpDiv).offset().top
-    //          , inputpos = $(input).offset().top;
-    //         if (dppos < inputpos) {
-    //           picker.dpDiv.addClass('above');
-    //         } else {
-    //           picker.dpDiv.addClass('below');
-    //         }
-    //       });
-    //     }
-    //   });
+    /** jQuery UI Datepicker **/
+    $.datepicker.setDefaults({dayNamesMin: $.datepicker._defaults.dayNamesShort});
+    $('.datepicker input').datepicker(
+      { dateFormat: 'DD d MM, yy'
+      , showOtherMonths: true
+      , selectOtherMonths: true
+      , minDate: 0
+      , firstDay: 1
+      , beforeShow : function (input, picker) {
+          picker.dpDiv
+            .removeClass('above')
+            .removeClass('below');
+          setTimeout(function () {
+            var dppos = $(picker.dpDiv).offset().top
+             , inputpos = $(input).offset().top;
+            if (dppos < inputpos) {
+              picker.dpDiv.addClass('above');
+            } else {
+              picker.dpDiv.addClass('below');
+            }
+          });
+        }
+      });
 
     /** Chosen Select Boxes **/
-    $(".chzn-select").chosen({
+    $('.chzn-select').chosen({
         allow_single_deselect: true
       , disable_search_threshold: 10
     });
 
-    // var availableTags = ["ActionScript","AppleScript","Asp","BASIC","C","C++","Clojure","COBOL","ColdFusion","Erlang","Fortran","Groovy","Haskell","Java","JavaScript","Lisp","Perl","PHP","Python","Ruby","Scala","Scheme"];
-    // $( ".autocomplete" ).autocomplete({
-    //   source: availableTags
-    // });
+    var availableTags = ['ActionScript','AppleScript','Asp','BASIC','C','C++','Clojure','COBOL','ColdFusion','Erlang','Fortran','Groovy','Haskell','Java','JavaScript','Lisp','Perl','PHP','Python','Ruby','Scala','Scheme']
+    $('.autocomplete').autocomplete({
+      source: availableTags
+    })
 
     /** Fancybox **/
-    $(".fancybox, [rel='fancybox-group']").fancybox(
-      { padding: 0
+    $('.fancybox, [rel="fancybox-group"]').fancybox(
+      { padding: 2
       , prevEffect: 'fade'
       , nextEffect: 'fade'
       }
@@ -54,11 +54,15 @@ window.module('control-misc-ui', function (module) {
 
     /* Check nav height */
     function staticNav() {
-      var sidenavHeight = $("#main-header").outerHeight() + $("#main-footer").outerHeight();
-      var winHeight = $(window).height();
-      $("#main-header").css('position', 'fixed');
-      if (sidenavHeight > winHeight) {
-        $("#main-header").css('position', 'absolute');
+      var mainHeader = $('.main-header')
+        , winHeight = $(window).height()
+        , sidebarHeight = $('.user-navigation').outerHeight(true) +
+                          $('.site-logo').outerHeight(true) +
+                          $('.main-navigation').outerHeight(true) +
+                          $('.main-footer').outerHeight(true)
+
+      if (sidebarHeight > winHeight) {
+        mainHeader.css('position', 'absolute')
       }
     }
 
@@ -151,7 +155,8 @@ window.module('control-misc-ui', function (module) {
 
     controls.append(
       $('<button/>').text(settings.confirmVerb)
-        .addClass(settings.danger ? 'danger' : 'primary')
+        .addClass('button')
+        .addClass(settings.danger ? 'button-error' : 'button-primary')
         .bind('click', function (e) {
           e.preventDefault();
           remove();
@@ -161,6 +166,7 @@ window.module('control-misc-ui', function (module) {
 
     controls.append(
       $('<button/>').text(settings.denyVerb)
+        .addClass('button')
         .bind('click', function (e) {
           e.preventDefault();
           remove();
@@ -179,11 +185,12 @@ window.module('control-misc-ui', function (module) {
 
   // Intercept all clicks on links with class
   // 'delete' and get the user to confirm first...
-  $('a.button.delete').on('click', function (e) {
+  $('.delete-button').submit(function () {
+    var deleteForm = this;
     window.confirmDialog({
       message: 'Are you sure you want to delete this?',
       confirm: function () {
-        document.location.href = $(e.target).attr('href');
+        deleteForm.submit();
       },
       confirmVerb: 'Delete',
       denyVerb: 'Don\'t delete'

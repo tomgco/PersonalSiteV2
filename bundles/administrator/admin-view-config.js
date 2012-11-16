@@ -1,5 +1,5 @@
 var _ = require('lodash')
-  ;
+
 
 module.exports = function(serviceLocator) {
   return serviceLocator.admin.viewConfig({
@@ -50,8 +50,12 @@ module.exports = function(serviceLocator) {
           type: 'multiselect',
           createOptions: function(callback) {
             serviceLocator.roleModel.find({}, {}, function(error, roles) {
-              callback(_.pluck(roles, 'name'));
-            });
+              if (error) {
+                return callback(error)
+              } else {
+                callback(null, _.pluck(roles, 'name'))
+              }
+            })
           }
         },
         created: {
@@ -63,7 +67,7 @@ module.exports = function(serviceLocator) {
       }
     }],
     formPostHelper: function(req, res, next) {
-      next();
+      next()
     }
-  });
-};
+  })
+}

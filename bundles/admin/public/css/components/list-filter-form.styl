@@ -1,0 +1,75 @@
+//
+// LIST FILTER FORM
+// ================
+// Appears on a list page and allows the user to filter the contnet table.
+//
+
+//
+// CONTAINING ELEMENTS
+//
+
+.list-filter-form
+  position absolute
+  top -6px
+  right 0
+
+  .form-row
+    margin-bottom 0
+
+  label
+    position relative
+    display inline-block
+
+    //
+    // TEXT INPUT
+    //
+
+    .form-label-text
+      display none
+
+    .form-field
+      width 150px
+      border-right 0
+      display inline-block
+      padding-top 3px
+      padding-bottom 3px
+
+
+  //
+  // RESET FILTER BUTTON
+  // When a filter is active, this button appears in the text input to allow the
+  // filter to be reset.
+  //
+
+  .button-reset
+    position absolute
+    top 50%
+    margin-top -9px
+    right 5px
+    padding 5px
+    line-height 0
+
+    &:hover
+      background-position -100px -2px
+
+
+  //
+  // SEARCH BUTTON
+  // Appears next to the text input, with a search icon instead of text.
+  //
+
+  input.button
+    padding 0
+    width 30px
+    height 30px
+    vertical-align top
+    text-indent -9999px
+    font-size 0px
+    line-height 0px
+    border-top-left-radius 0
+    border-bottom-left-radius 0
+    background-position -82px -18px
+    background-repeat no-repeat
+    background-image versionPath("/admin/images/content/sprite.png")
+    .svg &
+      background-image versionPath("/admin/images/content/sprite.svg")

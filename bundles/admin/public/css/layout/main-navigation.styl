@@ -1,0 +1,116 @@
+//
+// MAIN NAVIGATION
+// ===============
+//
+
+
+//
+// PRIMARY LEVEL LINKS
+//
+
+.main-navigation
+  clear left
+  position relative
+  z-index 1
+  background-color #efefef
+
+  ul
+    border-bottom 1px solid #fff
+    border-top 1px solid #ddd
+
+  li
+    border-top 1px solid #fff
+    border-bottom 1px solid #ddd
+
+  a
+    position relative
+    display block
+    padding 14px 30px
+    color #222
+    text-decoration none
+    font-family $headingFontFamily
+    font-size 1.14em
+
+  a:hover
+  .nav-active > a
+    padding-left 26px
+    border-left 4px solid $colorPrimary
+    background-color #ddd
+    z-index 1
+
+  .nav-active
+    border-top 1px solid #ddd
+    border-bottom 1px solid #ddd
+    margin-right -1px
+    margin-top -1px
+
+  .nav-active > a
+    background-color #fff
+    padding-top 15px
+    padding-bottom 14px
+    z-index 1
+
+
+//
+// SECONDARY LEVEL LINKS
+//
+
+.main-navigation
+
+  .sub-nav
+    display none
+    border-bottom 0
+
+    li
+      border 0
+      border-bottom 1px solid #eee
+
+    li:last-child
+      border-bottom 0
+
+    a
+      padding-top 4px
+      padding-bottom 4px
+      font-size 1em
+      background-color #ddd
+
+  .nav-active
+    .sub-nav
+      display block
+
+
+//
+// TERTIARY LEVEL LINKS
+//
+
+.main-navigation
+
+  .sub-nav
+    .sub-nav
+      border-top 1px solid #eee
+
+      a
+        padding-left 40px
+        &:hover
+          padding-left 36px
+
+      .js &
+        display none
+
+    .js & .nav-expandable:after
+      position absolute
+      content ""
+      display block
+      right 20px
+      top 50%
+      width 6px
+      height 8px
+      margin-top -4px
+      transition all 0.4s ease
+      background-repeat no-repeat
+      background-position -23px -30px
+      background-image versionPath("/admin/images/content/sprite.png")
+      .svg&
+        background-image versionPath("/admin/images/content/sprite.svg")
+    .js & .nav-expandable.nav-expanded:after
+      transform rotate(-90deg)

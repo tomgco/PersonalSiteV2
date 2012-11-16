@@ -1,0 +1,91 @@
+//
+// NOTIFICATIONS
+// =============
+//
+
+
+//
+// BASE NOTIFICATION STYLE
+//
+
+.notification
+  position relative
+  padding 10px 14px
+  margin-bottom 20px
+  color #fff
+  font-weight bold
+  background-color $colorBase
+  border 1px solid rgba(0,0,0,.1)
+  box-shadow 0 1px 1px rgba(#fff, 0.3) inset, 0 1px 3px rgba(#000, 0.1)
+  text-shadow 0 -1px 0 rgba(0,0,0,.2)
+  border-radius 2px
+
+  .button-close
+    position absolute
+    right 15px
+    top 15px
+    display block
+    width 10px
+    height 11px
+    text-indent -9999px
+    overflow hidden
+    background-position 0 -16px
+    background-repeat no-repeat
+    background-image versionPath("/admin/images/content/sprite.png")
+    .svg &
+      background-image versionPath("/admin/images/content/sprite.svg")
+    &:hover
+      background-position -10px -16px
+
+
+//
+// NOTIFICATION CONTENT
+//
+
+.notification-title
+  color inherit
+  line-height 1.2
+  margin-bottom 0
+
+  // Add a leading margin to the content, only if the title is present
+  & + .notification-content
+    margin-top 10px
+
+.notification-content
+  &,
+  ul,
+  ol,
+  p
+    margin 0
+
+  ul,
+  ol
+    margin-left 10px
+
+// If we are showing a close button, ensure the content doesn't run beneath it
+.notification.close
+  .notification-content
+  .notification-title
+    padding-right 30px
+
+
+//
+// NOTIFICATION COLOUR MODIFIERS
+// These modifier classes should be used in addition to the default class:
+// <div class="notification notification-success">Changes have been saved.</a>
+//
+
+.notification-primary
+  background-color $colorPrimary
+
+.notification-success
+  background-color $colorSuccess
+
+.notification-notice
+  background-color $colorNotice
+
+.notification-warning
+  background-color $colorWarning
+
+.notification-error
+  background-color $colorError

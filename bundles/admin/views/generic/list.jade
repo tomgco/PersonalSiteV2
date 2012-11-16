@@ -2,22 +2,23 @@ extend ../layout
 
 block content
 
-  include ../mixins/file
+  include ../mixins/form-elements/file
   include ../mixins/grouped-multiselect-mixin
 
-  h1 #{model.plural}
+  header.page-header
+    h1 #{model.plural}
 
-  nav.breadcrumb
-    ul
-      li.nav-home: a(href='/admin') Home
-      li #{model.plural}
+    nav.breadcrumb
+      ul
+        li.nav-home: a(href='/admin') Home
+        li #{model.plural}
 
-  include includes/list-actions
+    include includes/list-actions
 
   .panel-list
     h3 All #{model.plural}
 
-    include includes/filter-form
+    include includes/list-filter-form
     include includes/filter-summary
 
     - if (dataSet.length === 0)
@@ -25,10 +26,11 @@ block content
         | No records found.
       - if (adminIsAllowed(model.name, 'create')) 
         p Would you like to 
-          a(href='/admin/#{model.slug}/new') add one?
+          a(href='/admin/#{model.slug}/new') add one
+          | ?
 
     - else
-      table.highlight.sortable
+      table.table-highlight.table-sortable
         thead
           tr
             - each group in viewSchema.groups
@@ -53,11 +55,11 @@ block content
                     - if (viewSchema.title === key)
                       td.title
                         strong: a(href='/admin/#{model.slug}/#{entity[model.idProperty]}')=propertyMeta.format(entityName)
-                        ul.row-actions
-                          - if (adminIsAllowed(model.name, 'update')) 
+                        - if (adminIsAllowed(model.name, 'update')) 
+                          ul.table-row-actions
                             li: a(href='/admin/#{model.slug}/#{entity[model.idProperty]}/edit') Edit
-                          - if (adminIsAllowed(model.name, 'delete')) 
-                            li: a(href='/admin/#{model.slug}/#{entity[model.idProperty]}/delete').delete Delete
+                            li
+                              include includes/delete-button
                     - else
                       - if (propertyMeta.type === 'checkbox')
                         td=booleanFormatter(entity[key])

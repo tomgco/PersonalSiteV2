@@ -128,7 +128,10 @@ module.exports = function routes(serviceLocator, schema, model, options) {
         Object.keys(group.properties).forEach(function(key) {
           if (typeof group.properties[key].createOptions === 'function') {
             fn.push(function(callback) {
-              group.properties[key].createOptions(function(options) {
+              group.properties[key].createOptions(function(error, options) {
+                if (error) {
+                  return callback(error)
+                }
                 group.properties[key].options = options
                 callback()
               })
@@ -136,8 +139,8 @@ module.exports = function routes(serviceLocator, schema, model, options) {
           }
         })
       })
-      async.parallel(fn, function() {
-        next()
+      async.parallel(fn, function(error) {
+        next(error)
       })
     }
   }
@@ -216,7 +219,7 @@ module.exports = function routes(serviceLocator, schema, model, options) {
         req.params.id,
         function (error, object) {
           if (error) {
-            return next(error);
+            return next(error)
           } else {
             options.renderFn(req, res, views.view, {
               viewSchema: schema,
@@ -298,12 +301,12 @@ module.exports = function routes(serviceLocator, schema, model, options) {
     }
   )
 
-  serviceLocator.router.get(
-    options.adminRoute + model.slug + '/:id/delete',
+  serviceLocator.router.post(
+    options.adminRoute + model.slug + '/delete',
     accessCheck('delete'),
     middleware.delete,
     function(req, res) {
-      model['delete'](req.params.id, function(error) {
+      model['delete'](req.body[model.idProperty], function(error) {
         if (error !== undefined) {
           res.send(404)
         } else {
