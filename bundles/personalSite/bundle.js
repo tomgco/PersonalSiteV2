@@ -23,6 +23,9 @@ module.exports = {
 
     serviceLocator.register('errorPage', __dirname + '/views/error')
 
+    serviceLocator.widgetManager
+        .register(require('./widgets/recent')(serviceLocator))
+
     // This is watch recompiles your stylus. Any that you need to compile to CSS
     // need to be defined here. This is quicker than the standard middleware.
     var w = serviceLocator.stylusWatch(__dirname + '/public/css/index.styl',

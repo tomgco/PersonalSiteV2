@@ -2,17 +2,19 @@ extend layout
 
 block content
 
-  article
-    img(src=versionPath('/site/images/shortlist.png'))
-    .info
-      h2 Php development for @clock
-      p Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, 
-        | ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna.
-    hr
+  !=widgetManager.render('frontpage::recent')
 
-  article
-    img(src=versionPath('/site/images/swipestation.png'))
-    .info
-      h2 Nodejs hardware hacking
-      p Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, 
-        | ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna.
+  //- article
+  //-   img(src=versionPath('/site/images/shortlist.png'))
+  //-   .info
+  //-     h2 Php development for @clock
+  //-     p Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, 
+  //-       | ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna.
+  //-   hr
+
+  //- article
+  //-   img(src=versionPath('/site/images/swipestation.png'))
+  //-   .info
+  //-     h2 Nodejs hardware hacking
+  //-     p Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, 
+  //-       | ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna.

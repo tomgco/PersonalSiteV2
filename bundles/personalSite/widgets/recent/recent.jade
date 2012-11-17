@@ -1,0 +1,9 @@
+- if ((typeof recentPosts !== 'undefined') && recentPosts.length > 0)
+    - each post in recentPosts
+      article
+        img(src='/site/images/shortlist.png')
+        .info
+          h2=post.title
+          p=post.summary
+        hr
+  //- a(href='/blog',class='button arrow') View all posts
