@@ -1,7 +1,8 @@
 - if ((typeof recentPosts !== 'undefined') && recentPosts.length > 0)
     - each post in recentPosts
       article
-        img(src='/images/' + post.images[0].path + post.images[0].basename)
+        - if (typeof post.images[0] !== 'undefined')
+          img(src='/images/' + post.images[0].path + post.images[0].basename)
         .info
           h2=post.title
           p=post.summary
