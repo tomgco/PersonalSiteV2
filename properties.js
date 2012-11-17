@@ -42,7 +42,7 @@ var environmentProperties = {
       }
   }
   , production: {
-    siteUrl: 'http://localhost:' + (basePort + 3)
+    siteUrl: 'http://xana.clockhosting.com:' + (basePort + 3)
     , port: basePort + 3
     , email: 'me@tomg.co'
     , database:
