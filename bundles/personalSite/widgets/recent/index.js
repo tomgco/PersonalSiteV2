@@ -20,7 +20,6 @@ module.exports = function(serviceLocator) {
     load: function(req, res, next) {
       serviceLocator.articleModel.findLive({},
         { sort: { publishedDate: -1} }, function(error, dataSet) {
-
         if (!error && dataSet.length !== 0) {
           data = _.extend({}, data, {
             latestPost: dataSet[0],
